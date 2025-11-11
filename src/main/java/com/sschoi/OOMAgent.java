@@ -1,4 +1,4 @@
-package com.oom;
+package com.sschoi;
 
 import java.lang.instrument.Instrumentation;
 import java.lang.management.ManagementFactory;
@@ -63,14 +63,10 @@ public class OOMAgent {
 
                 log(used, max, msToOOM, HEAP_THRESHOLD, OOM_THRESHOLD_MS, writer);
 
-                //if (USE_DB && (usagePercent >= HEAP_THRESHOLD || msToOOM <= OOM_THRESHOLD_MS)) {
-                	//logToDatabase(used, max, usagePercent, msToOOM);
-                //}
-                
-                if (USE_DB) {                 
-                    logToDatabase(used, max, msToOOM, HEAP_THRESHOLD, OOM_THRESHOLD_MS);
+                if (USE_DB && (usagePercent >= HEAP_THRESHOLD || msToOOM <= OOM_THRESHOLD_MS)) {
+                	logToDatabase(used, max, usagePercent, msToOOM);
                 }
-
+                
                 prevUsed = used;
                 prevTime = currentTime;
                 Thread.sleep(CHECK_INTERVAL_MS);
