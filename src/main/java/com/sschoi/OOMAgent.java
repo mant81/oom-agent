@@ -64,7 +64,7 @@ public class OOMAgent {
                 log(used, max, msToOOM, HEAP_THRESHOLD, OOM_THRESHOLD_MS, writer);
 
                 if (USE_DB && (usagePercent >= HEAP_THRESHOLD || msToOOM <= OOM_THRESHOLD_MS)) {
-                	logToDatabase(used, max, usagePercent, msToOOM);
+                	logToDatabase(used, max, msToOOM, HEAP_THRESHOLD, OOM_THRESHOLD_MS);
                 }
                 
                 prevUsed = used;
